@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="{{site.charset}}" />
+  <title>
+    {% if wp_title %}
+      {{ wp_title }} - {{ site.name }}
+    {% else %}
+      {{ site.name }}
+    {% endif %}
+  </title>
+  <link rel="stylesheet" property="stylesheet" href="{{ revisionedPath('styles/main.css') }}" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.querySelector('html').classList.remove('no-js');</script>
+<link rel="pingback" href="{{site.pingback_url}}" />
+  {{function('wp_head')}}
+  {% block head %}
+  {% endblock %}
+</head>
+
+<body class="{{body_class}}">
+  {% block header %}
+    {% include 'components/header.twig' %}
+  {% endblock %}
+  
+  {% include 'components/main-nav.twig' %}
+
+  <main class="o-wrapper">
+    {% block content %}
+      Sorry, no content
+    {% endblock %}
+  </main>
+
+  {% block footer %}
+    {% include 'components/footer.twig' %}
+  {% endblock %}
+  {{ function('wp_footer') }}
+  <script src="{{ revisionedPath('scripts/bundle.js') }}" async></script>
+</body>
+</html>
